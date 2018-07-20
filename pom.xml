@@ -12,11 +12,13 @@
 	http://www.fsf.org. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
   <parent>
     <artifactId>addons-parent-pom</artifactId>
     <groupId>org.exoplatform.addons</groupId>
     <version>6</version>
   </parent>
+  
   <groupId>org.exoplatform.addons.github</groupId>
   <artifactId>github-oauth-parent</artifactId>
   <version>1.0.x-SNAPSHOT</version>
@@ -36,8 +38,8 @@
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <org.exoplatform.depmgt.version>11-SNAPSHOT</org.exoplatform.depmgt.version>
-    <platform.version>4.3.x-SNAPSHOT</platform.version>
+    <org.exoplatform.depmgt.version>11.1</org.exoplatform.depmgt.version>
+    <platform.version>4.3.1</platform.version>
   </properties>
   <dependencyManagement>
     <dependencies>
