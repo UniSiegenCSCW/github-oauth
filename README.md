@@ -73,6 +73,9 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
 
 # 6. restart exo server
 
+# 7. compiled code sample
+     http://www.mediafire.com/file/oyoxnrhcyd1rx3x/github_oauth_working.zip/file
+
 
 
 
