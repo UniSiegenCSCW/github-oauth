@@ -10,6 +10,7 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
 
 
 2. Upload local.json file to this docker command
+
    a)inside container server: 
    docker exec -it 049f2e3739c1 bash
    
