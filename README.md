@@ -12,13 +12,14 @@ This addon allows users to sign into the eXo Platform using their GitHub account
 
 
 
-# 2. Upload local.json file to to docker container
+# 2. Upload `local.json` file to docker container
 
 ## a) optional: on host server where the docker container is running
 
 to familiarize yourself with the docker container, you can bash into it:
 
 `docker exec -it <container_ID> bash`
+
 (`<container_ID>` available via `docker ps -all`)
    
 ## b) copy file from host server into the docker container
@@ -58,30 +59,51 @@ This is how the file `local.json` should look for telling eXo what local add-ons
 ![](doc_screenshot/3.PNG)
 
 
+# 4. change permissions
+
+you might need to change permissions for both `local.json` as well as the add-on so eXo can actually read it.
+
+bash into the docker container
+
+ `docker exec -it <container_ID> bash`
+
+then
+
+  `sudo chown exo:exo /tmp/github-oauth-1.0.x-SNAPSHOT.zip`
+
+  `sudo chown exo:exo /opt/exo/addons/local.json`
 
 
-# 4. use eXo Add-On Manager to install add-on, go to `/opt/exo`
+# 5. use eXo Add-On Manager to install add-on
+
+bash into the docker container
+
+ `docker exec -it <container_ID> bash`
+
+then go to `/opt/exo` and run the Add-On Manager
+
+ `cd /opt/exo`
 
 `./addon install github-oauth:1.0.x-SNAPSHOT`
    
    ![](doc_screenshot/4.PNG)
    
    
-# 5. copy `exo.properties` file from container to desktop
+# 6. copy `exo.properties` file from container to desktop
 
    `docker cp <ontainer_ID>:/etc/exo/exo.properties "C:\<local_path>\exo.properties"`
    
    add these 3 lines of code at the end of the file & upload it again to the container
    
-   exo.oauth.github.enabled=true    
-   exo.oauth.github.clientId=87cdc0996b3b08e6846e
-   exo.oauth.github.clientSecret=d1cd2885d3efe729d1e9451c3adebd14db5673c9
+      exo.oauth.github.enabled=true    
+      exo.oauth.github.clientId=87cdc0996b3b08e6846e
+      exo.oauth.github.clientSecret=d1cd2885d3efe729d1e9451c3adebd14db5673c9
    
    `docker cp "C:\<local_path>\exo.properties" <ontainer_ID>:/etc/exo/exo.properties`
 
-# 6. restart eXo server
+# 7. restart eXo server
 
-# 7. compiled code sample
+# 8. compiled code sample
      http://www.mediafire.com/file/oyoxnrhcyd1rx3x/github_oauth_working.zip/file
 
 
