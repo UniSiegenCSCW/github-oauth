@@ -60,7 +60,7 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
 # 5. copy "exo.properties" file from  server to desktop :  
    docker cp   049f2e3739c1:/etc/exo/exo.properties "C:\Users\Istiaq Khan\Desktop\exo.properties"
    
-   add this lines of code & again upload it to server
+   add these 3 lines of code & again upload it to server
    
    
    exo.oauth.github.enabled=true    
