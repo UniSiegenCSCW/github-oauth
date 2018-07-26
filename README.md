@@ -50,7 +50,7 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
 
 
 
-# 4. install addon go to /opt/exo
+# 4. install addon go to "/opt/exo"
    then enter this command
    ./addon install github-oauth:1.0.x-SNAPSHOT
    
