@@ -49,7 +49,8 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
 
 # 3. upload "github-oauth-1.0.x-SNAPSHOT.zip"  file to server "tmp" folder
    
-![addon_install_cmd1](https://user-images.githubusercontent.com/1423939/43135040-57898e32-8f44-11e8-8d1a-07ba562a13c8.PNG)
+![](doc_screenshot/3.PNG)
+
 
 
 
@@ -57,7 +58,7 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
    then enter this command
    ./addon install github-oauth:1.0.x-SNAPSHOT
    
-   ![addon_install_cmd3](https://user-images.githubusercontent.com/1423939/43135411-9ea7a064-8f45-11e8-85c5-e2eb6b55e7eb.PNG)
+   ![](doc_screenshot/3.PNG)
    
    
 # 5. copy "exo.properties" file from  server to desktop :  
