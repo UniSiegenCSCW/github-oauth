@@ -91,7 +91,7 @@ then go to `/opt/exo` and run the Add-On Manager
    
 # 6. copy `exo.properties` file from container to desktop
 
-   `docker cp <ontainer_ID>:/etc/exo/exo.properties "C:\<local_path>\exo.properties"`
+   `docker cp <container_ID>:/etc/exo/exo.properties "C:\<local_path>\exo.properties"`
    
    add these 3 lines of code at the end of the file & upload it again to the container
    
@@ -99,7 +99,7 @@ then go to `/opt/exo` and run the Add-On Manager
       exo.oauth.github.clientId=87cdc0996b3b08e6846e
       exo.oauth.github.clientSecret=d1cd2885d3efe729d1e9451c3adebd14db5673c9
    
-   `docker cp "C:\<local_path>\exo.properties" <ontainer_ID>:/etc/exo/exo.properties`
+   `docker cp "C:\<local_path>\exo.properties" <container_ID>:/etc/exo/exo.properties`
 
 # 7. restart eXo server
 
