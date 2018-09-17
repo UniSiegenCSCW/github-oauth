@@ -1,24 +1,32 @@
 # GitHub Open Authentication addon
-This addon allows users to sign in eXo Platform using their GitHub accounts.
+This addon allows users to sign into the eXo Platform using their GitHub accounts.
 
-# 1. Github web new app settings
-![git_dev1](https://user-images.githubusercontent.com/1423939/43135120-98bdc6c0-8f44-11e8-9662-c5fd8b96c8a7.PNG)
-
-
-![git_dev2](https://user-images.githubusercontent.com/1423939/43135121-98e55c76-8f44-11e8-8657-11a3738eca42.PNG)
+# 1. GitHub web new app settings
+![](doc_screenshot/1.PNG)
 
 
+![](doc_screenshot/2.PNG)
 
-# 2. Upload local.json file to this docker command
 
-   a)inside container server: 
-   docker exec -it 049f2e3739c1 bash
+
+
+
+
+# 2. Upload `local.json` file to docker container
+
+## a) optional: on host server where the docker container is running
+
+to familiarize yourself with the docker container, you can bash into it:
+
+`docker exec -it <container_ID> bash`
+
+(`<container_ID>` available via `docker ps -all`)
    
-   b)copy file from desktop to server:   
-   docker cp  "C:\Users\Istiaq Khan\Desktop\local.json" 049f2e3739c1:/opt/exo/addons/local.json
+## b) copy file from host server into the docker container
+
+`docker cp "C:\<local_path>\local.json" <container_ID>:/opt/exo/addons/local.json`
    
-   local.json file code below
-   http://www.mediafire.com/file/ddmnpm3i3o0k808/local.json/file
+This is how the file `local.json` should look for telling eXo what local add-ons are available:
    
     [
        {
@@ -44,36 +52,60 @@ This addon allows users to sign in eXo Platform using their GitHub accounts.
     
     
 
-# 3. upload "github-oauth-1.0.x-SNAPSHOT.zip"  file to server "tmp" folder
-   
-![addon_install_cmd1](https://user-images.githubusercontent.com/1423939/43135040-57898e32-8f44-11e8-8d1a-07ba562a13c8.PNG)
+# 3. upload `github-oauth-1.0.x-SNAPSHOT.zip` file to `/tmp` folder in docker container
+
+`docker cp "C:\<local_path>\github-oauth-1.0.x-SNAPSHOT.zip" <container_ID>:/tmp/github-oauth-1.0.x-SNAPSHOT.zip`
+
+![](doc_screenshot/3.PNG)
 
 
+# 4. change permissions
 
-# 4. install addon go to "/opt/exo"
-   then enter this command
-   ./addon install github-oauth:1.0.x-SNAPSHOT
-   
-   ![addon_install_cmd3](https://user-images.githubusercontent.com/1423939/43135411-9ea7a064-8f45-11e8-85c5-e2eb6b55e7eb.PNG)
-   
-   
-# 5. copy "exo.properties" file from  server to desktop :  
-   docker cp   049f2e3739c1:/etc/exo/exo.properties "C:\Users\Istiaq Khan\Desktop\exo.properties"
-   
-   add this lines of code & again upload it to server
-   
-   
-   exo.oauth.github.enabled=true    
-   exo.oauth.github.clientId=87cdc0996b3b08e6846e
-   exo.oauth.github.clientSecret=d1cd2885d3efe729d1e9451c3adebd14db5673c9
-   
-   sample exo.properties file look like this
-   http://www.mediafire.com/file/m2dr1x8i8f4bbca/exo.properties/file
+you might need to change permissions for both `local.json` as well as the add-on so eXo can actually read it.
+
+bash into the docker container
+
+ `docker exec -it <container_ID> bash`
+
+then
+
+  `sudo chown exo:exo /tmp/github-oauth-1.0.x-SNAPSHOT.zip`
+
+  `sudo chown exo:exo /opt/exo/addons/local.json`
 
 
-# 6. restart exo server
+# 5. use eXo Add-On Manager to install add-on
 
-# 7. compiled code sample
+bash into the docker container
+
+ `docker exec -it <container_ID> bash`
+
+then go to `/opt/exo` and run the Add-On Manager
+
+ `cd /opt/exo`
+
+`./addon install github-oauth:1.0.x-SNAPSHOT`
+   
+   ![](doc_screenshot/4.PNG)
+   
+   
+# 6. copy `exo.properties` file from container to desktop
+
+   `docker cp <container_ID>:/etc/exo/exo.properties "C:\<local_path>\exo.properties"`
+   
+   add these 3 lines of code at the end of the file & upload it again to the container
+   
+      exo.oauth.github.enabled=true    
+      exo.oauth.github.clientId=your_client_id
+      exo.oauth.github.clientSecret=your_client_secret
+   
+   `docker cp "C:\<local_path>\exo.properties" <container_ID>:/etc/exo/exo.properties`
+
+# 7. restart eXo server
+     docker restart <container_ID>
+     docker-compose up -d
+
+# 8. compiled code sample
      http://www.mediafire.com/file/oyoxnrhcyd1rx3x/github_oauth_working.zip/file
 
 
