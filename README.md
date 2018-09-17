@@ -96,12 +96,14 @@ then go to `/opt/exo` and run the Add-On Manager
    add these 3 lines of code at the end of the file & upload it again to the container
    
       exo.oauth.github.enabled=true    
-      exo.oauth.github.clientId=87cdc0996b3b08e6846e
-      exo.oauth.github.clientSecret=d1cd2885d3efe729d1e9451c3adebd14db5673c9
+      exo.oauth.github.clientId=your_client_id
+      exo.oauth.github.clientSecret=your_client_secret
    
    `docker cp "C:\<local_path>\exo.properties" <container_ID>:/etc/exo/exo.properties`
 
 # 7. restart eXo server
+     docker restart <container_ID>
+     docker-compose up -d
 
 # 8. compiled code sample
      http://www.mediafire.com/file/oyoxnrhcyd1rx3x/github_oauth_working.zip/file
