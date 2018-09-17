@@ -2,7 +2,7 @@
 This addon allows users to sign into the eXo Platform using their GitHub accounts.
 
 # 1. GitHub web new app settings
-![](doc_screenshot/1.PNG)
+![](doc_screenshot/1_1.PNG)
 
 
 ![](doc_screenshot/2.PNG)
