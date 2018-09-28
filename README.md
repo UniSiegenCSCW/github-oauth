@@ -84,7 +84,7 @@ then go to `/opt/exo` and run the Add-On Manager
 
  `cd /opt/exo`
 
-`./addon install github-oauth:1.0.x-SNAPSHOT`
+`./addon install github-oauth:1.0.x-SNAPSHOT --force`
    
    ![](doc_screenshot/4.PNG)
    
